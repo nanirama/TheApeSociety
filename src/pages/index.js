@@ -1,24 +1,196 @@
-import * as React from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Sidebar from "../components/home/sidebar";
 import ApeIndex from "../components/home/ApeIndex";
+import ApeSearchIndex from "../components/home/ApeSearchIndex";
 import Popup from "../components/home/popup";
 
 const IndexPage = ({data}) => {
   const { AllApes, AllStats } = data
+  const emptyQuery = '';
+  const [state, setState] = useState({
+    filteredData: [],
+    query: emptyQuery
+  })
+  const [AccessoryState, setAccessoryState] = useState([])
+  const [BackgroundState, setBackgroundState] = useState([])
+  const [BodyState, setBodyState] = useState([])
+  const [CClassState, setCClassState] = useState([])
+  const [EarsState, setEarsState] = useState([])
+  const [EyesState, setEyesState] = useState([])
+  const [FamilyState, setFamilyState] = useState([])
+  const [FacialHairState, setFacialHairState] = useState([])
+  const [HatState, setHatState] = useState([])
+  const [HeadState, setHeadState] = useState([])
+  const [WeaponState, setWeaponState] = useState([])
+
+  useEffect(() => {
+    console.log('state',state)
+  }, [
+    state,
+    AccessoryState,
+    BackgroundState,
+    BodyState,
+    CClassState,
+    EarsState, 
+    EyesState,
+    FamilyState, 
+    FacialHairState,
+    HatState,
+    HeadState,
+    WeaponState
+  ]);
+  
+
+  const handleFilterChange = () => {
+    const query ='filter'
+    const posts = AllApes.edges || []  
+    console.log('EarsState',EarsState)
+    let NewData = []
+    const filteredData = posts.filter(post => {
+      const { Accessory, Background, Body, CClass, Ears, Eyes, Facial_Hair, Hat, Head, Weapon  } = post.node    
+      AccessoryState.map((item)=>{
+        if(item===Accessory.name)
+        {
+          NewData.push(item)
+        }
+      })
+      BackgroundState.map((item)=>{
+        if(item===Background.name)
+        {
+          NewData.push(item)
+        }
+      })
+      BodyState.map((item)=>{
+        if(item===Body.name)
+        {
+          NewData.push(item)
+        }
+      })
+      CClassState.map((item)=>{
+        if(item===CClass)
+        {
+          NewData.push(item)
+        }
+      })
+      EarsState.map((item)=>{
+        if(item===Ears.name)
+        {
+          NewData.push(item)
+        }
+      })
+      EyesState.map((item)=>{
+        if(item===Eyes.name)
+        {
+          NewData.push(item)
+        }
+      })
+      FacialHairState.map((item)=>{
+        if(item===Facial_Hair.name)
+        {
+          NewData.push(item)
+        }
+      })
+      HatState.map((item)=>{
+        if(item===Hat.name)
+        {
+          NewData.push(item)
+        }
+      })
+      HeadState.map((item)=>{
+        if(item===Head.name)
+        {
+          NewData.push(item)
+        }
+      })
+      WeaponState.map((item)=>{
+        if(item===Weapon.name)
+        {
+          NewData.push(item)
+        }
+      })
+      return NewData
+    })
+    if(filteredData.length>0)
+    {
+      setState({    
+        query,
+        filteredData,
+      })
+    }
+    else
+    {
+      setState({    
+        query:'',
+        filteredData:posts,
+      }) 
+    }
+    
+  }
+
+
+
+  const handleInputChange = event => {
+    const query = event.target.value
+    const posts = AllApes.edges || []
+
+    const filteredData = posts.filter(post => {
+      const { name  } = post.node
+      
+      
+    })
+
+    console.log('filter data',filteredData)
+    setState({    
+      query,
+      filteredData,
+    })
+  }
+  const { filteredData, query } = state
+  const hasSearchResults = filteredData && query !== emptyQuery
+  console.log('hasSearchResults',hasSearchResults)
+  
+  const ApesData = hasSearchResults ? filteredData : AllApes.edges
+
+
   return(
-  <Layout>
+  <Layout data={AllStats}
+  handleInputChange={handleInputChange}
+  handleFilterChange={handleFilterChange}
+  AccessoryState={AccessoryState} setAccessoryState={setAccessoryState}
+  BackgroundState={BackgroundState} setBackgroundState={setBackgroundState}
+  BodyState={BodyState} setBodyState={setBodyState}
+  CClassState={CClassState} setCClassState={setCClassState}
+  EarsState={EarsState} setEarsState={setEarsState}
+  EyesState={EyesState} setEyesState={setEyesState}
+  FacialHairState={FacialHairState} setFacialHairState={setFacialHairState}
+  FamilyState={FamilyState} setFamilyState={setFamilyState}
+  HatState={HatState} setHatState={setHatState}
+  HeadState={HeadState} setHeadState={setHeadState}
+  WeaponState={WeaponState} setWeaponState={setWeaponState}>
     <Seo title="Home" />
-
     <section className="flex flex-wrap">
-
-      <div className="lg:w-3/12 w-full px-3 xl:pr-10 mb-4">
-        <Sidebar data={AllStats} />
+      <div className="lg:w-3/12 w-full px-3 xl:pr-10 mb-4 sidebar">
+        <Sidebar data={AllStats}
+          handleInputChange={handleInputChange}
+          handleFilterChange={handleFilterChange}
+          AccessoryState={AccessoryState} setAccessoryState={setAccessoryState}
+          BackgroundState={BackgroundState} setBackgroundState={setBackgroundState}
+          BodyState={BodyState} setBodyState={setBodyState}
+          CClassState={CClassState} setCClassState={setCClassState}
+          EarsState={EarsState} setEarsState={setEarsState}
+          EyesState={EyesState} setEyesState={setEyesState}
+          FacialHairState={FacialHairState} setFacialHairState={setFacialHairState}
+          FamilyState={FamilyState} setFamilyState={setFamilyState}
+          HatState={HatState} setHatState={setHatState}
+          HeadState={HeadState} setHeadState={setHeadState}
+          WeaponState={WeaponState} setWeaponState={setWeaponState}
+        />
       </div>
       <div className="lg:w-9/12 w-full px-3">
-        <ApeIndex data={AllApes} />
+        { hasSearchResults ? <ApeSearchIndex data={filteredData}/> : <ApeIndex data={AllApes.edges}/>}        
       </div>
     </section>
 
@@ -72,7 +244,7 @@ export const pageQuery = graphql`
         Ape
         Alien
       }
-      Class {
+      CClass : Class {
         Royal_Advisors
         Merchants
         Explorers
@@ -176,7 +348,7 @@ export const pageQuery = graphql`
         Sword
       }
     }
-    AllApes : allManifestJson(limit: 12) {
+    AllApes : allManifestJson{
       edges {
         node {
           id
@@ -217,10 +389,9 @@ export const pageQuery = graphql`
             name
             image
           }
-          cname: class
+          CClass: class
         }
       }
     } 
   }
 `
-

@@ -6,7 +6,7 @@ import SideBarItem from "./SideBarItem"
 
 
 
-const Sidebar = ({
+const MenuDropDown = ({
   data, handleInputChange, handleFilterChange, 
   AccessoryState, setAccessoryState,
   BackgroundState, setBackgroundState,
@@ -19,6 +19,7 @@ const Sidebar = ({
   HatState, setHatState,
   HeadState, setHeadState,
   WeaponState, setWeaponState,
+  showSidebar, setShowSidebar
 }) => {
   const dataToObject = obj => {
     const ObjectData = Object.keys(obj).map((key, i) => {
@@ -69,15 +70,13 @@ const Sidebar = ({
       }
     }  
     setState(TempState)
-    handleFilterChange()
-    console.log('Secondary state',state)
+    handleFilterChange(!showSidebar)
+    setShowSidebar()
   }
  
 
   return (
     <>
-      <h2 className="text-3xl text-white">Ape Library</h2>
-
       <div className="my-3 w-full">
         <div className="input-group relative flex flex-nowrap items-stretch w-full mb-4 border rounded-lg">
           <button
@@ -178,4 +177,4 @@ const Sidebar = ({
     </>
   )
 }
-export default Sidebar
+export default MenuDropDown

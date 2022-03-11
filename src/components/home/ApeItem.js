@@ -1,15 +1,14 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import ApeModal from "./ApeModal"
 const ApeItem = ({ data }) => {
   const [showModal, setShowModal] = useState(false)
   return (
     <>
-      <div className=" md:w-1/4 w-full md:px-3 lg:mb-10 mb-5">
+      <div className=" sm:1/2 md:w-1/4 w-full md:px-3 lg:mb-10 mb-5">
         <StaticImage src="../../assets/images/joannes-robinson.png" alt="" />
-        <div className="flex justify-between items-center mt-1">
-          <h4 className="text-sm text-white" onClick={() => setShowModal(true)}>{data.name}</h4>
+        <div className="flex justify-between items-center mt-1" onClick={() => setShowModal(true)}>
+          <h4 className="text-sm text-white">{data.name}</h4>
           <StaticImage src="../../assets/images/explorer.png" alt={data.name} />
         </div>
         
