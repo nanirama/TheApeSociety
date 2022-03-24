@@ -2,102 +2,178 @@
 @tailwind components;
 @tailwind utilities;
 
-body{background-color: #1d1d1d; font-family: 'CircularStdRegular';}
-button, p{font-family: 'CircularStdRegular';}
-h1, h2, h3, h4, h5, h6{ font-family: 'CircularStdBold';}
-
-@font-face {
-    font-family: 'CircularStdRegular';
-    src: url('../assets/fonts/CircularStd-Regular.woff2') format('woff2');
-    font-weight: 100 400;
-    font-style: normal;
-    font-display: swap;
-} 
-@font-face {
-    font-family: 'CircularStdRegularItalic';
-    src: url('../assets/fonts/CircularStd-RegularItalic.woff2') format('woff2');
-    font-weight: 100 400;
-    font-style: italic;
-    font-display: swap;
+body {
+  background-color: #1d1d1d;
+  font-family: "CircularStdRegular";
 }
-@font-face {
-    font-family: 'CircularStdMedium';
-    src: url('../assets/fonts/CircularStd-Medium.woff2') format('woff2');
-    font-weight: 500 600;
-    font-style: normal;
-    font-display: swap;
+button,
+p {
+  font-family: "CircularStdRegular";
 }
-@font-face {
-    font-family: 'CircularStdMediumItalic';
-    src: url('../assets/fonts/CircularStd-MediumItalic.woff2') format('woff2');
-    font-weight: 500 600;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'CircularStdBold';
-    src: url('../assets/fonts/CircularStd-Bold.woff2') format('woff2');
-    font-weight: 700 800;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'CircularStdBoldItalic';
-    src: url('../assets/fonts/CircularStd-Regular.woff2') format('woff2');
-    font-weight: 700 800;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'CircularStdBlackItalic';
-    src: url('../assets/fonts/CircularStd-BlackItalic.woff2') format('woff2');
-    font-weight: 900;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'CircularStdBlack';
-    src: url('../assets/fonts/CircularStd-Black.woff2') format('woff2');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "CircularStdBold";
 }
 
-.bg-zinc-600{ background-color: #505050;}
-.Collapsible span{position: relative;width: 100%;display:flex; align-items:center; color:#fff;}
-.Collapsible span:after{content:''; position: absolute; right: 0;  width:15px; height:15px; 
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;}
-.Collapsible span.is-open:after{background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-    -webkit-transform: rotate(-180deg);
-    transform: rotate(-180deg);}
-.form-check-input{border-radius: 0;background-color: #1d1d1d;border: 2px solid #fff;}
-.form-check img{ height: 12px;}
-hr{height: 1px;background-color: #4a4a4a;}
-.rarity_bg{background-image: url(../assets/images/rarity-bg.jpg); background-repeat: no-repeat; background-position: top center; background-repeat: no-repeat;}
-.w-90{width:90%;}
+@font-face {
+  font-family: "CircularStdRegular";
+  src: url("../assets/fonts/CircularStd-Regular.woff2") format("woff2");
+  font-weight: 100 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CircularStdRegularItalic";
+  src: url("../assets/fonts/CircularStd-RegularItalic.woff2") format("woff2");
+  font-weight: 100 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CircularStdMedium";
+  src: url("../assets/fonts/CircularStd-Medium.woff2") format("woff2");
+  font-weight: 500 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CircularStdMediumItalic";
+  src: url("../assets/fonts/CircularStd-MediumItalic.woff2") format("woff2");
+  font-weight: 500 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CircularStdBold";
+  src: url("../assets/fonts/CircularStd-Bold.woff2") format("woff2");
+  font-weight: 700 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CircularStdBoldItalic";
+  src: url("../assets/fonts/CircularStd-Regular.woff2") format("woff2");
+  font-weight: 700 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CircularStdBlackItalic";
+  src: url("../assets/fonts/CircularStd-BlackItalic.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "CircularStdBlack";
+  src: url("../assets/fonts/CircularStd-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+.bg-zinc-600 {
+  background-color: #505050;
+}
+.Collapsible span {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.Collapsible span:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+}
+.Collapsible span.is-open:after {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+.form-check-input {
+  border-radius: 0;
+  background-color: #1d1d1d;
+  border: 2px solid #fff;
+}
+hr {
+  height: 1px;
+  background-color: #4a4a4a;
+}
+.rarity_bg {
+  background-image: url(../assets/images/rarity-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+.w-90 {
+  width: 90%;
+}
 
 /* main header{ display: none;} */
 
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+
+.sidemenu {
+  width: 50px;
+}
 
 @media only screen and (min-width: 801px) {
-.mobile-nav{ display: none;} 
+  .mobile-nav {
+    display: none;
+  }
 }
 @media only screen and (max-width: 800px) {
-.desktop-nav{ display: none;}    
-.mobile-nav{ display: block;} 
-.mobile-nav .open{ top: 3rem;}
+  .desktop-nav,
+  .list-items {
+    display: none;
+  }
+  .show {
+    display: none;
+  }
+  .hide {
+    display: block;
+  }
+  .mobile-nav {
+    display: block;
+  }
+  .mobile-nav .open {
+    top: 3rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .mobile-nav .open {
+    top: 2rem;
+  }
 }
 @media only screen and (max-width: 599px) {
-    .sidenav{ width: 60%;}
+  .sidenav {
+    width: 60%;
+  }
 }
-@media only screen and (max-width: 479px) {
-.mobile-nav .open{ top: 2rem; right: 1rem;}
-.sidenav{ width: 100%;}
+@media only screen and (max-width: 480px) {
+  .mobile-nav .open {
+    right: 1rem;
+  }
+  .sidenav {
+    width: 100%;
+  }
+  .logo {
+    width: 200px;
+  }
 }
-
-
-
-
-
-

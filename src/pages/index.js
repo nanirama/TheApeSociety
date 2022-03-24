@@ -156,20 +156,7 @@ const IndexPage = ({data}) => {
 
 
   return(
-  <Layout data={AllStats}
-  handleInputChange={handleInputChange}
-  handleFilterChange={handleFilterChange}
-  AccessoryState={AccessoryState} setAccessoryState={setAccessoryState}
-  BackgroundState={BackgroundState} setBackgroundState={setBackgroundState}
-  BodyState={BodyState} setBodyState={setBodyState}
-  CClassState={CClassState} setCClassState={setCClassState}
-  EarsState={EarsState} setEarsState={setEarsState}
-  EyesState={EyesState} setEyesState={setEyesState}
-  FacialHairState={FacialHairState} setFacialHairState={setFacialHairState}
-  FamilyState={FamilyState} setFamilyState={setFamilyState}
-  HatState={HatState} setHatState={setHatState}
-  HeadState={HeadState} setHeadState={setHeadState}
-  WeaponState={WeaponState} setWeaponState={setWeaponState}>
+  <Layout>
     <Seo title="Home" />
     <section className="flex flex-wrap">
       <div className="lg:w-3/12 w-full px-3 xl:pr-10 mb-4 sidebar">
@@ -183,7 +170,6 @@ const IndexPage = ({data}) => {
           EarsState={EarsState} setEarsState={setEarsState}
           EyesState={EyesState} setEyesState={setEyesState}
           FacialHairState={FacialHairState} setFacialHairState={setFacialHairState}
-          FamilyState={FamilyState} setFamilyState={setFamilyState}
           HatState={HatState} setHatState={setHatState}
           HeadState={HeadState} setHeadState={setHeadState}
           WeaponState={WeaponState} setWeaponState={setWeaponState}

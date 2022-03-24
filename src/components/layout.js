@@ -13,21 +13,7 @@ import Header from "./header"
 import "./layout.css"
 import "./global.css"
 
-const Layout = ({
-  children,
-  data, handleInputChange, handleFilterChange, 
-  AccessoryState, setAccessoryState,
-  BackgroundState, setBackgroundState,
-  BodyState, setBodyState,
-  CClassState, setCClassState,
-  EarsState, setEarsState,
-  EyesState, setEyesState,
-  FacialHairState, setFacialHairState,
-  FamilyState, setFamilyState,
-  HatState, setHatState,
-  HeadState, setHeadState,
-  WeaponState, setWeaponState
-}) => {
+const Layout = ({children}) => {
   const data2 = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -41,22 +27,7 @@ const Layout = ({
 
   return (
     <>
-      <Header siteTitle={data2.site.siteMetadata?.title || `Title`}
-      data={data}
-      handleInputChange={handleInputChange}
-      handleFilterChange={handleFilterChange}
-      AccessoryState={AccessoryState} setAccessoryState={setAccessoryState}
-      BackgroundState={BackgroundState} setBackgroundState={setBackgroundState}
-      BodyState={BodyState} setBodyState={setBodyState}
-      CClassState={CClassState} setCClassState={setCClassState}
-      EarsState={EarsState} setEarsState={setEarsState}
-      EyesState={EyesState} setEyesState={setEyesState}
-      FacialHairState={FacialHairState} setFacialHairState={setFacialHairState}
-      FamilyState={FamilyState} setFamilyState={setFamilyState}
-      HatState={HatState} setHatState={setHatState}
-      HeadState={HeadState} setHeadState={setHeadState}
-      WeaponState={WeaponState} setWeaponState={setWeaponState}
-      />
+      <Header siteTitle={data2.site.siteMetadata?.title || `Title`}/>
       <div className="flex-1 w-full max-w-5xl mx-auto"
       >
          <main>{children}</main>
