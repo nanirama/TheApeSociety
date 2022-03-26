@@ -13,11 +13,7 @@ const IndexPage = (props) => {
 
   const { filterData, updateData } = dataContext();
   const { AllApes, AllStats } = props.data
-  // const emptyQuery = '';
-  // const [state, setState] = useState({
-  //   filteredData: [],
-  //   query: emptyQuery
-  // })
+
   const [AccessoryState, setAccessoryState] = useState([])
   const [BackgroundState, setBackgroundState] = useState([])
   const [BodyState, setBodyState] = useState([])
@@ -45,29 +41,16 @@ const IndexPage = (props) => {
     HeadState,
     WeaponState
   ]);
-<<<<<<< HEAD
-=======
- 
->>>>>>> 8cbc7516a9923e5eb1a1a37ef058b2124312747a
 
   
 
   const handleFilterChange = (filteredData) => {
-<<<<<<< HEAD
     // console.log('filter data', filteredData)
     // const query ='filter'
     //  setState({    
     //     query,
     //     filteredData,
     //   })
-=======
-    console.log('filter data', filteredData)
-    const query ='filter'
-     setState({    
-        query,
-        filteredData,
-      })
->>>>>>> 8cbc7516a9923e5eb1a1a37ef058b2124312747a
     // const posts = AllApes.edges || []  
     // console.log('EarsState',EarsState)
     // let NewData = []
@@ -162,23 +145,10 @@ const IndexPage = (props) => {
       return(
         name.toLowerCase().includes(query.toLowerCase())
       )      
-<<<<<<< HEAD
-=======
-    })
-    setState({    
-      query,
-      filteredData,
->>>>>>> 8cbc7516a9923e5eb1a1a37ef058b2124312747a
     })
     updateData(filteredData)
   }
-  // const { filteredData, query } = state
-  // const hasSearchResults = filteredData && query !== emptyQuery
-  // console.log('hasSearchResults',hasSearchResults)
-  
-  // const ApesData = hasSearchResults ? filteredData : []
-  //console.log('AllApes.edges' ,AllApes.edges)
-//console.log('filter data',filterData)
+
 
   return(
   <Layout>

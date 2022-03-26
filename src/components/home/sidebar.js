@@ -53,11 +53,7 @@ const Sidebar = ({
     Weapon,
   } = data
 
-<<<<<<< HEAD
   const { filterData, updateData } = dataContext();
-=======
-  //console.log('my All data', posts)
->>>>>>> 8cbc7516a9923e5eb1a1a37ef058b2124312747a
 
   const AccessoryData = dataToObject(Accessory)
   const BackgroundData = dataToObject(Background)
@@ -71,7 +67,6 @@ const Sidebar = ({
   const HeadData = dataToObject(Head)
   const WeaponData = dataToObject(Weapon)
 
-<<<<<<< HEAD
   const onChangehandler = (e, allData) => {
     let TempData = filterData
     
@@ -86,21 +81,6 @@ const Sidebar = ({
       console.log('difference',difference)
       updateData(difference)
     }
-=======
-  const onChangehandler = (e, state, setState, allData) => {
-    let TempState = state
-    if (e.target.checked) {
-      TempState.push(e.target.name)
-      handleFilterChange(allData)
-    } else {
-      let index = TempState.indexOf(e.target.value)
-      if (index !== -1) {
-        TempState.splice(index, 1)
-      }
-      handleFilterChange(posts)
-    }
-    setState(TempState)
->>>>>>> 8cbc7516a9923e5eb1a1a37ef058b2124312747a
   }
 
   return (

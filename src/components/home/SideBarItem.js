@@ -30,11 +30,7 @@ const SideBarItem = ({ data, allData, onChangehandler, state, setState, category
         value={newName}
         id={newName}
         name={category}
-<<<<<<< HEAD
         onChange={e => onChangehandler(e, allData)}
-=======
-        onChange={e => onChangehandler(e, state, setState, allData)}
->>>>>>> 8cbc7516a9923e5eb1a1a37ef058b2124312747a
       />
       <div className="w-6 h-6 mr-3 ml-1">
         {name !== "None" && category ? (
