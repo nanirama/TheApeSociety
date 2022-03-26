@@ -4,9 +4,11 @@ import Collapsible from "react-collapsible"
 import { StaticImage } from "gatsby-plugin-image"
 import SideBarItem from "./SideBarItem"
 import MobileSidebar from "./mobile-sidebar"
+import dataContext from "../../Context/DataContext";
 
 const Sidebar = ({
   data,
+  posts,
   handleInputChange,
   handleFilterChange,
   AccessoryState,
@@ -51,6 +53,12 @@ const Sidebar = ({
     Weapon,
   } = data
 
+<<<<<<< HEAD
+  const { filterData, updateData } = dataContext();
+=======
+  //console.log('my All data', posts)
+>>>>>>> 8cbc7516a9923e5eb1a1a37ef058b2124312747a
+
   const AccessoryData = dataToObject(Accessory)
   const BackgroundData = dataToObject(Background)
   const BodyData = dataToObject(Body)
@@ -63,19 +71,36 @@ const Sidebar = ({
   const HeadData = dataToObject(Head)
   const WeaponData = dataToObject(Weapon)
 
-  const onChangehandler = (e, state, setState) => {
+<<<<<<< HEAD
+  const onChangehandler = (e, allData) => {
+    let TempData = filterData
+    
+    if (e.target.checked) {      
+      updateData([...TempData, ...allData])
+      console.log('filterData', filterData)
+    } else {
+      let difference = TempData
+                 .filter(x => !allData.includes(x))
+                 .concat(allData.filter(x => !TempData.includes(x)));
+
+      console.log('difference',difference)
+      updateData(difference)
+    }
+=======
+  const onChangehandler = (e, state, setState, allData) => {
     let TempState = state
     if (e.target.checked) {
       TempState.push(e.target.name)
+      handleFilterChange(allData)
     } else {
       let index = TempState.indexOf(e.target.value)
       if (index !== -1) {
         TempState.splice(index, 1)
       }
+      handleFilterChange(posts)
     }
     setState(TempState)
-    handleFilterChange()
-    console.log("Secondary state", state)
+>>>>>>> 8cbc7516a9923e5eb1a1a37ef058b2124312747a
   }
 
   return (
@@ -130,7 +155,7 @@ const Sidebar = ({
           </button>
           <input
             type="search"
-            className="form-control relative flex-auto min-w-0 block w-full py-0 px-2 focus:ring-0 ring-inherit text-base font-normal text-gray-700 bg-transparent border-0 m-0 focus:text-gray-700 focus:bg-transparent focus:border-inherit focus:outline-none"
+            className="form-control relative flex-auto min-w-0 block w-full py-0 px-2 focus:ring-0 ring-inherit text-base font-normal text-white bg-transparent border-0 m-0 sfocus:bg-transparent focus:border-inherit focus:outline-none"
             placeholder="search by name"
             onChange={handleInputChange}
           />
@@ -140,106 +165,173 @@ const Sidebar = ({
       <div className="list-items">
         <Collapsible className=" mb-3" trigger="Accessory">
           {AccessoryData &&
-            AccessoryData.map((item, index) => (
+            AccessoryData.map((item, index) => {
+              const AccessoryfilteredData = posts.filter(post => {
+                const { Accessory } = post.node  
+                if(item.name === Accessory.name.replace(" ","_"))
+                  {
+                    return item
+                  }
+              })
+              
+              return(
               <SideBarItem
                 category="Accessory"
                 key={index}
                 data={item}
+                allData={AccessoryfilteredData}
                 onChangehandler={onChangehandler}
                 state={AccessoryState}
                 setState={setAccessoryState}
               />
-            ))}
+            )})}
         </Collapsible>
         <hr className="mb-3 ring-offset-gray-800" />
 
         <Collapsible className=" mb-3" trigger="Background">
           {BackgroundData &&
-            BackgroundData.map((item, index) => (
+            BackgroundData.map((item, index) => {
+              const BackgroundfilteredData = posts.filter(post => {
+                const { Background } = post.node  
+                  if(item.name === Background.name.replace(" ","_"))
+                  {
+                    return item
+                  }
+              })
+              return(
               <SideBarItem
                 category="Background"
                 key={index}
                 data={item}
+                allData={BackgroundfilteredData}
                 onChangehandler={onChangehandler}
                 state={BackgroundState}
                 setState={setBackgroundState}
               />
-            ))}
+            )})}
         </Collapsible>
         <hr className="mb-3 ring-offset-gray-800" />
 
         <Collapsible className=" mb-3" trigger="Body">
           {BodyData &&
-            BodyData.map((item, index) => (
+            BodyData.map((item, index) => {
+              const BodyfilteredData = posts.filter(post => {
+                const { Body } = post.node  
+                  if(item.name === Body.name.replace(" ","_"))
+                  {
+                    return item
+                  }
+              })
+              return(
               <SideBarItem
                 category="Body"
                 key={index}
                 data={item}
+                allData={BodyfilteredData}
                 onChangehandler={onChangehandler}
                 state={BodyState}
                 setState={setBodyState}
               />
-            ))}
+            )})}
         </Collapsible>
         <hr className="mb-3 ring-offset-gray-800" />
 
         <Collapsible className=" mb-3" trigger="Ears">
           {EarsData &&
-            EarsData.map((item, index) => (
+            EarsData.map((item, index) => {
+              const EarsfilteredData = posts.filter(post => {
+                const { Ears } = post.node  
+                  if(item.name === Ears.name.replace(" ","_"))
+                  {
+                    return item
+                  }
+              })
+              return(
               <SideBarItem
                 category="Ears"
                 key={index}
                 data={item}
+                allData={EarsfilteredData}
                 onChangehandler={onChangehandler}
                 state={EarsState}
                 setState={setEarsState}
               />
-            ))}
+            )})}
         </Collapsible>
         <hr className="mb-3 ring-offset-gray-800" />
 
         <Collapsible className=" mb-3" trigger="Eyes">
           {EyesData &&
-            EyesData.map((item, index) => (
+            EyesData.map((item, index) => {
+              const EyesfilteredData = posts.filter(post => {
+                const { Eyes } = post.node  
+                  if(item.name === Eyes.name.replace(" ","_"))
+                  {
+                    return item
+                  }
+              })
+              return(
               <SideBarItem
                 category="Eyes"
                 key={index}
                 data={item}
+                allData={EyesfilteredData}
                 onChangehandler={onChangehandler}
                 state={EyesState}
                 setState={setEyesState}
               />
-            ))}
+            )})}
         </Collapsible>
         <hr className="mb-3 ring-offset-gray-800" />
 
         <Collapsible className=" mb-3" trigger="Class">
           {ClassData &&
-            ClassData.map((item, index) => (
+            ClassData.map((item, index) => {
+              const CClassfilteredData = posts.filter(post => {
+                const { CClass } = post.node  
+                  if(item.name === CClass.replace(" ","_"))
+                  {
+                    return item
+                  }
+              })
+              return(
               <SideBarItem
                 category="Class"
                 key={index}
                 data={item}
+                allData={CClassfilteredData}
                 onChangehandler={onChangehandler}
                 state={CClassState}
                 setState={setCClassState}
               />
-            ))}
+            )})}
         </Collapsible>
         <hr className="mb-3 ring-offset-gray-800" />
 
         <Collapsible className=" mb-3" trigger="Facial Hair">
           {FacialHairData &&
-            FacialHairData.map((item, index) => (
+            FacialHairData.map((item, index) => {
+              const FacialHairfilteredData = posts.filter(post => {
+                const { Facial_Hair } = post.node 
+                  //console.log('item.name',item.name) 
+                  //console.log('Facial_Hair.name',Facial_Hair.name.replace(" ","_").replace(" ","_"))               
+                  if(item.name === Facial_Hair.name.replace(" ","_").replace(" ","_"))
+                  {
+                    return item
+                  }
+              })
+              console.log('FacialHairfilteredData',FacialHairfilteredData)
+              return(
               <SideBarItem
                 category="Facial Hair"
                 key={index}
                 data={item}
+                allData={FacialHairfilteredData}
                 onChangehandler={onChangehandler}
                 state={FacialHairState}
                 setState={setFacialHairState}
               />
-            ))}
+            )})}
         </Collapsible>
         <hr className="mb-3 ring-offset-gray-800" />
 
@@ -252,46 +344,73 @@ const Sidebar = ({
 
         <Collapsible className=" mb-3" trigger="Hat">
           {HatData &&
-            HatData.map((item, index) => (
+            HatData.map((item, index) => {
+              const HatfilteredData = posts.filter(post => {
+                const { Hat } = post.node  
+                  if(item.name === Hat.name.replace(" ","_"))
+                  {
+                    return item
+                  }
+              })
+              return(
               <SideBarItem
                 category="Hat"
                 key={index}
                 data={item}
+                allData={HatfilteredData}
                 onChangehandler={onChangehandler}
                 state={HatState}
                 setState={setHatState}
               />
-            ))}
+            )})}
         </Collapsible>
         <hr className="mb-3 ring-offset-gray-800" />
 
         <Collapsible className=" mb-3" trigger="Head">
           {HeadData &&
-            HeadData.map((item, index) => (
+            HeadData.map((item, index) => {
+              const HeadfilteredData = posts.filter(post => {
+                const { Head } = post.node  
+                  if(item.name === Head.name.replace(" ","_"))
+                  {
+                    return item
+                  }
+              })
+              return(
               <SideBarItem
                 category="Head"
                 key={index}
                 data={item}
+                allData={HeadfilteredData}
                 onChangehandler={onChangehandler}
                 state={HeadState}
                 setState={setHeadState}
               />
-            ))}
+            )})}
         </Collapsible>
         <hr className="mb-3 ring-offset-gray-800" />
 
         <Collapsible className=" mb-3" trigger="Weapon">
           {WeaponData &&
-            WeaponData.map((item, index) => (
+            WeaponData.map((item, index) => {
+              const WeaponfilteredData = posts.filter(post => {
+                const { Weapon } = post.node  
+                if(item.name === Weapon.name.replace(" ","_"))
+                  {
+                    return item
+                  }
+              })
+              return(
               <SideBarItem
                 category="Weapon"
                 key={index}
                 data={item}
+                allData={WeaponfilteredData}
                 onChangehandler={onChangehandler}
                 state={WeaponState}
                 setState={setWeaponState}
               />
-            ))}
+            )})}
         </Collapsible>
         <hr className="mb-3 ring-offset-gray-800" />
       </div>

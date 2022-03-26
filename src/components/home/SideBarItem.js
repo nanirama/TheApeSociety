@@ -18,7 +18,7 @@ const getTrait = (category, trait) => {
   return imageURL
 }
 
-const SideBarItem = ({ data, onChangehandler, state, setState, category }) => {
+const SideBarItem = ({ data, allData, onChangehandler, state, setState, category }) => {
   const { name, value } = data
   const newName = name.replace("_", " ")
   const box = useRef(null)
@@ -29,8 +29,12 @@ const SideBarItem = ({ data, onChangehandler, state, setState, category }) => {
         type="checkbox"
         value={newName}
         id={newName}
-        name={newName}
-        onChange={e => onChangehandler(e, state, setState)}
+        name={category}
+<<<<<<< HEAD
+        onChange={e => onChangehandler(e, allData)}
+=======
+        onChange={e => onChangehandler(e, state, setState, allData)}
+>>>>>>> 8cbc7516a9923e5eb1a1a37ef058b2124312747a
       />
       <div className="w-6 h-6 mr-3 ml-1">
         {name !== "None" && category ? (

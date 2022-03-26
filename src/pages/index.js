@@ -1,19 +1,23 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext  } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+
+import dataContext from "../Context/DataContext";
 import Sidebar from "../components/home/sidebar";
 import ApeIndex from "../components/home/ApeIndex";
 import ApeSearchIndex from "../components/home/ApeSearchIndex";
 import Popup from "../components/home/popup";
 
-const IndexPage = ({data}) => {
-  const { AllApes, AllStats } = data
-  const emptyQuery = '';
-  const [state, setState] = useState({
-    filteredData: [],
-    query: emptyQuery
-  })
+const IndexPage = (props) => {
+
+  const { filterData, updateData } = dataContext();
+  const { AllApes, AllStats } = props.data
+  // const emptyQuery = '';
+  // const [state, setState] = useState({
+  //   filteredData: [],
+  //   query: emptyQuery
+  // })
   const [AccessoryState, setAccessoryState] = useState([])
   const [BackgroundState, setBackgroundState] = useState([])
   const [BodyState, setBodyState] = useState([])
@@ -27,9 +31,8 @@ const IndexPage = ({data}) => {
   const [WeaponState, setWeaponState] = useState([])
 
   useEffect(() => {
-    console.log('state',state)
+    
   }, [
-    state,
     AccessoryState,
     BackgroundState,
     BodyState,
@@ -42,91 +45,110 @@ const IndexPage = ({data}) => {
     HeadState,
     WeaponState
   ]);
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 8cbc7516a9923e5eb1a1a37ef058b2124312747a
+
   
 
-  const handleFilterChange = () => {
+  const handleFilterChange = (filteredData) => {
+<<<<<<< HEAD
+    // console.log('filter data', filteredData)
+    // const query ='filter'
+    //  setState({    
+    //     query,
+    //     filteredData,
+    //   })
+=======
+    console.log('filter data', filteredData)
     const query ='filter'
-    const posts = AllApes.edges || []  
-    console.log('EarsState',EarsState)
-    let NewData = []
-    const filteredData = posts.filter(post => {
-      const { Accessory, Background, Body, CClass, Ears, Eyes, Facial_Hair, Hat, Head, Weapon  } = post.node    
-      AccessoryState.map((item)=>{
-        if(item===Accessory.name)
-        {
-          NewData.push(item)
-        }
-      })
-      BackgroundState.map((item)=>{
-        if(item===Background.name)
-        {
-          NewData.push(item)
-        }
-      })
-      BodyState.map((item)=>{
-        if(item===Body.name)
-        {
-          NewData.push(item)
-        }
-      })
-      CClassState.map((item)=>{
-        if(item===CClass)
-        {
-          NewData.push(item)
-        }
-      })
-      EarsState.map((item)=>{
-        if(item===Ears.name)
-        {
-          NewData.push(item)
-        }
-      })
-      EyesState.map((item)=>{
-        if(item===Eyes.name)
-        {
-          NewData.push(item)
-        }
-      })
-      FacialHairState.map((item)=>{
-        if(item===Facial_Hair.name)
-        {
-          NewData.push(item)
-        }
-      })
-      HatState.map((item)=>{
-        if(item===Hat.name)
-        {
-          NewData.push(item)
-        }
-      })
-      HeadState.map((item)=>{
-        if(item===Head.name)
-        {
-          NewData.push(item)
-        }
-      })
-      WeaponState.map((item)=>{
-        if(item===Weapon.name)
-        {
-          NewData.push(item)
-        }
-      })
-      return NewData
-    })
-    if(filteredData.length>0)
-    {
-      setState({    
+     setState({    
         query,
         filteredData,
       })
-    }
-    else
-    {
-      setState({    
-        query:'',
-        filteredData:posts,
-      }) 
-    }
+>>>>>>> 8cbc7516a9923e5eb1a1a37ef058b2124312747a
+    // const posts = AllApes.edges || []  
+    // console.log('EarsState',EarsState)
+    // let NewData = []
+    // const filteredData = posts.filter(post => {
+    //   const { Accessory, Background, Body, CClass, Ears, Eyes, Facial_Hair, Hat, Head, Weapon  } = post.node    
+    //   AccessoryState.map((item)=>{
+    //     if(item===Accessory.name)
+    //     {
+    //       NewData.push(item)
+    //     }
+    //   })
+    //   BackgroundState.map((item)=>{
+    //     if(item===Background.name)
+    //     {
+    //       NewData.push(item)
+    //     }
+    //   })
+    //   BodyState.map((item)=>{
+    //     if(item===Body.name)
+    //     {
+    //       NewData.push(item)
+    //     }
+    //   })
+    //   CClassState.map((item)=>{
+    //     if(item===CClass)
+    //     {
+    //       NewData.push(item)
+    //     }
+    //   })
+    //   EarsState.map((item)=>{
+    //     if(item===Ears.name)
+    //     {
+    //       NewData.push(item)
+    //     }
+    //   })
+    //   EyesState.map((item)=>{
+    //     if(item===Eyes.name)
+    //     {
+    //       NewData.push(item)
+    //     }
+    //   })
+    //   FacialHairState.map((item)=>{
+    //     if(item===Facial_Hair.name)
+    //     {
+    //       NewData.push(item)
+    //     }
+    //   })
+    //   HatState.map((item)=>{
+    //     if(item===Hat.name)
+    //     {
+    //       NewData.push(item)
+    //     }
+    //   })
+    //   HeadState.map((item)=>{
+    //     if(item===Head.name)
+    //     {
+    //       NewData.push(item)
+    //     }
+    //   })
+    //   WeaponState.map((item)=>{
+    //     if(item===Weapon.name)
+    //     {
+    //       NewData.push(item)
+    //     }
+    //   })
+    //   return NewData
+    // })
+    // if(filteredData.length>0)
+    // {
+    //   setState({    
+    //     query,
+    //     filteredData,
+    //   })
+    // }
+    // else
+    // {
+    //   setState({    
+    //     query:'',
+    //     filteredData:posts,
+    //   }) 
+    // }
     
   }
 
@@ -135,25 +157,28 @@ const IndexPage = ({data}) => {
   const handleInputChange = event => {
     const query = event.target.value
     const posts = AllApes.edges || []
-
     const filteredData = posts.filter(post => {
       const { name  } = post.node
-      
-      
+      return(
+        name.toLowerCase().includes(query.toLowerCase())
+      )      
+<<<<<<< HEAD
+=======
     })
-
-    console.log('filter data',filteredData)
     setState({    
       query,
       filteredData,
+>>>>>>> 8cbc7516a9923e5eb1a1a37ef058b2124312747a
     })
+    updateData(filteredData)
   }
-  const { filteredData, query } = state
-  const hasSearchResults = filteredData && query !== emptyQuery
-  console.log('hasSearchResults',hasSearchResults)
+  // const { filteredData, query } = state
+  // const hasSearchResults = filteredData && query !== emptyQuery
+  // console.log('hasSearchResults',hasSearchResults)
   
-  const ApesData = hasSearchResults ? filteredData : AllApes.edges
-
+  // const ApesData = hasSearchResults ? filteredData : []
+  //console.log('AllApes.edges' ,AllApes.edges)
+//console.log('filter data',filterData)
 
   return(
   <Layout>
@@ -161,6 +186,7 @@ const IndexPage = ({data}) => {
     <section className="flex flex-wrap">
       <div className="lg:w-3/12 w-full px-3 xl:pr-10 mb-4 sidebar">
         <Sidebar data={AllStats}
+          posts = {AllApes.edges}
           handleInputChange={handleInputChange}
           handleFilterChange={handleFilterChange}
           AccessoryState={AccessoryState} setAccessoryState={setAccessoryState}
@@ -176,7 +202,8 @@ const IndexPage = ({data}) => {
         />
       </div>
       <div className="lg:w-9/12 w-full px-3">
-        { hasSearchResults ? <ApeSearchIndex data={filteredData}/> : <ApeIndex data={AllApes.edges}/>}        
+        {/* { hasSearchResults ? <ApeSearchIndex data={filteredData}/> : <ApeIndex data={filterData}/>}         */}
+        {filterData.length>0 ? <ApeSearchIndex data={filterData}/> : <ApeIndex data={AllApes.edges}/>}
       </div>
     </section>
 

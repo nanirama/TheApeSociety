@@ -3,7 +3,7 @@ module.exports = {
     title: `The Ape Society Gallery`,
     description: `Browse the 7,000 unique apes of The Ape Society - an exclusive NFT project on Cardano.`,
     siteUrl: `https://gallery.theapesociety.io`,
-    author: `ApeSociety`
+    author: "@theapesociety",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

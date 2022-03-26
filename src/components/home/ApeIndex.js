@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useRef } from "react"
+
 import ApeItem from "./ApeItem"
 const ApeIndex = ({ data }) => {
-  
+    
     const [showModal, setShowModal] = useState(false);
     const allData = data
+    
     const [list, setList] = useState([...allData.slice(0, 12)])
     const [loadMore, setLoadMore] = useState(false)
     const [hasMore, setHasMore] = useState(allData.length > 10)
+
+    console.log('data in Ape Index', list)
 
     const loadRef = useRef()
 
